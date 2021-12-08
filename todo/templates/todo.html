@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="my-todo">
+        <h1>All Todos</h1>
+        <table class="todo-list">
+            <tr>
+                <th>All Tasks</th>
+                <th>Scheduled for</th>
+                <th></th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.todo }}</td>
+                <td>{{ task.scheduled }}</td>
+                <td class="btns">
+                    <a href="{% url 'editTodo' task.id %}" class="btn btn-edit">Edit</a>
+                    <a href="{% url 'deleteTodo' task.id %}" class="btn btn-delete">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <a href="add-todo" class="btn"><button>Add Task</button></a>
+    </div>
+</div>
+
+{% endblock %}
